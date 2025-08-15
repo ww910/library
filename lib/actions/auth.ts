@@ -8,6 +8,8 @@ import { hash } from "bcryptjs";
 import { eq } from "drizzle-orm";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { workflowClient } from "../workflow";
+import config from "../config";
 
 export const signInWithCredentials = async (params: Pick<AuthCredentials, "email" | "password">) => {
   const { email, password } = params;
@@ -52,7 +54,7 @@ export const signUp = async (params: AuthCredentials) => {
   .from(users)
   .where(eq(users.email, email))
   .limit(1);
-console.log("Existing user:", existingUser);
+
   if (existingUser.length > 0) {
     throw new Error("User already exists");
   }
@@ -68,6 +70,14 @@ console.log("Existing user:", existingUser);
       password: hashedPassword,
       universityId,
       universityCard,
+    });
+
+    await workflowClient.trigger({
+      url: `${config.env.prodApiEndpoint}/api/workflows/onboarding`,
+      body: {
+        email,
+        fullName,
+      }
     });
 
     await signInWithCredentials({email,password});
