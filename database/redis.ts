@@ -3,6 +3,6 @@ import {Redis} from "@upstash/redis";
 
 
 export const redis = new Redis({
-  url: config.env.upstash.redis.redisUrl,
-  token: config.env.upstash.redis.redisToken,
+  url: config.env.upstash.redisUrl,
+  token: config.env.upstash.redisToken,
 })
