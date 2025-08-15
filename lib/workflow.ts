@@ -16,9 +16,9 @@ export async function sendEmail({
     headers: { "Content-Type": "application/json" },
     // For server usage, prefer a private key (ACCESS TOKEN) from EmailJS
     body: JSON.stringify({
-      service_id: process.env.EMAILJS_SERVICE_ID,
-      template_id: process.env.EMAILJS_TEMPLATE_ID,
-      user_id: process.env.EMAILJS_PUBLIC_KEY,     // or omit if using private key only
+      service_id: 'service_u5vbi42',
+      template_id: 'template_tdqxoah',
+      user_id: "LwWXTEu8hRY_80-og",     // or omit if using private key only
       accessToken: process.env.EMAILJS_PRIVATE_KEY, // recommended for server
       template_params: { email, subject, message },
     }),
