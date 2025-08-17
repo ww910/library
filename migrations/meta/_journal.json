@@ -8,6 +8,27 @@
       "when": 1755083772273,
       "tag": "0000_familiar_leper_queen",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1755361152936,
+      "tag": "0001_perpetual_proteus",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1755380378082,
+      "tag": "0002_silky_moira_mactaggert",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1755380682090,
+      "tag": "0003_fresh_warlock",
+      "breakpoints": true
     }
   ]
 }

@@ -10,7 +10,7 @@ import {
   useForm,
   UseFormReturn,
 } from "react-hook-form";
-import { ZodSchema } from "zod";
+import { ZodType } from "zod";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -23,12 +23,12 @@ import {
 import { Input } from "./ui/input";
 import Link from "next/link";
 import { FIELD_NAMES, FIELD_TYPES } from "@/constants";
-import ImageUpload from "./ImageUpload";
+import FileUpload from "./FileUpload";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
 interface AuthFormProps<T extends FieldValues> {
-  schema: ZodSchema<T>;
+  schema: ZodType<T, any, any>;
   defaultValues: T;
   onSubmit: (data: T) => Promise<{ success: boolean; error?: string }>;
   type: "SIGN_IN" | "SIGN_UP";
@@ -42,7 +42,7 @@ function AuthForm<T extends FieldValues>({ type, schema, defaultValues, onSubmit
 
   const isSignIn = type === "SIGN_IN";
 
-  const form: UseFormReturn<T> = useForm({
+  const form = useForm<T>({
     resolver: zodResolver(schema),
     defaultValues: defaultValues as DefaultValues<T>,
   });
@@ -90,7 +90,7 @@ function AuthForm<T extends FieldValues>({ type, schema, defaultValues, onSubmit
                   <FormControl>
                     {
                       field.name === "universityCard" ? (
-                        <ImageUpload onFileChange={field.onChange} />
+                        <FileUpload onFileChange={field.onChange} type="image" accept="image/*" placeholder="Upload your university ID" folder="ids" variant="dark" />
                       ) : (
                         <Input
                           required

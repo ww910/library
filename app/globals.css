@@ -13,7 +13,7 @@
 @theme {
   /* Fonts */
   --font-ibm-plex-sans: "IBM Plex Sans", sans-serif;
-  --font-bebas-neue: var(--bebas-neue), sans-serif;
+  --font-bebas-neue: var(--font-bebas-neue), sans-serif;
 
   /* Breakpoints */
   --breakpoint-xs: 480px;

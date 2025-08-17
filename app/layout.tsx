@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+
 import localFont from "next/font/local";
 import { ReactNode } from "react";
 import { Toaster } from "@/components/ui/sonner";
@@ -38,14 +39,14 @@ async function RootLayout({
 
   return (
     <html lang="en">
-      <SessionProvider session={session}>
       <body
           className={`${ibmFlexSans.className} ${bebasNeue.variable} antialiased`}
       >
+        <SessionProvider session={session}>
         {children}
           <Toaster richColors /> 
-      </body>
       </SessionProvider>
+      </body>
     </html>
   );
 }
